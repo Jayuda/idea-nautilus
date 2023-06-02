@@ -50,7 +50,7 @@ rm -f ~/.local/share/nautilus-python/extensions/idea-nautilus.py
 
 # Download and install the extension
 echo "Downloading newest version..."
-wget --show-progress -q -O ~/.local/share/nautilus-python/extensions/idea-nautilus.py https://raw.githubusercontent.com/jayuda/idea-nautilus/master/idea-nautilus.py
+curl -s -o ~/.local/share/nautilus-python/extensions/idea-nautilus.py https://raw.githubusercontent.com/jayuda/idea-nautilus/master/idea-nautilus.py
 
 # Restart nautilus
 echo "Restarting nautilus..."
