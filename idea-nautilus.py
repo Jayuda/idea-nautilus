@@ -1,4 +1,4 @@
-# VSCode Nautilus Extension
+# IntelliJIDEA Nautilus Extension
 #
 # Place me in ~/.local/share/nautilus-python/extensions/,
 # ensure you have python-nautilus package, restart Nautilus, and enjoy :)
@@ -10,16 +10,16 @@ from subprocess import call
 import os
 
 # path to vscode
-VSCODE = 'code'
+INTELJIDEA = 'idea'
 
 # what name do you want to see in the context menu?
-VSCODENAME = 'Code'
+INTELJIDEANAME = 'IntelliJ IDEA'
 
 # always create new window?
 NEWWINDOW = False
 
 
-class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
+class IntelliJIDEAExtension(GObject.GObject, Nautilus.MenuProvider):
 
     def launch_vscode(self, menu, files):
         safepaths = ''
@@ -37,14 +37,14 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
         if NEWWINDOW:
             args = '--new-window '
 
-        call(VSCODE + ' ' + args + safepaths + '&', shell=True)
+        call(INTELJIDEA + ' ' + args + safepaths + '&', shell=True)
 
     def get_file_items(self, *args):
         files = args[-1]
         item = Nautilus.MenuItem(
-            name='VSCodeOpen',
-            label='Open in ' + VSCODENAME,
-            tip='Opens the selected files with VSCode'
+            name='IntelliJIDEAOpen',
+            label='Open in ' + INTELJIDEANAME,
+            tip='Opens the selected files with IntelliJIDEA'
         )
         item.connect('activate', self.launch_vscode, files)
 
@@ -53,9 +53,9 @@ class VSCodeExtension(GObject.GObject, Nautilus.MenuProvider):
     def get_background_items(self, *args):
         file_ = args[-1]
         item = Nautilus.MenuItem(
-            name='VSCodeOpenBackground',
-            label='Open in ' + VSCODENAME,
-            tip='Opens the current directory in VSCode'
+            name='IntelliJIDEAOpenBackground',
+            label='Open in ' + INTELJIDEANAME,
+            tip='Opens the current directory in IntelliJIDEA'
         )
         item.connect('activate', self.launch_vscode, [file_])
 
